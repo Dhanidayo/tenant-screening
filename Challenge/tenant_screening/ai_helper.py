@@ -7,16 +7,16 @@ from openai import OpenAI
 load_dotenv()
 
 class AIHelper:
-    def __init__(self, api_key=None):
+    def __init__(self):
         """
         Initialize AIHelper with OpenAI API key.
         """
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        api_key = os.getenv("OPENAI_API_KEY")
 
-        if not self.api_key:
+        if not api_key:
             raise ValueError("API key not found! Set OPENAI_API_KEY in a .env file or environment variable.")
         
-        self.client = OpenAI(api_key=self.api_key)
+        self.client = OpenAI(api_key=api_key)
 
     def query_chatgpt(self, tenant: Dict[str, str], blacklist_entry: Dict[str, str]) -> Dict[str, str]:
         """

@@ -96,7 +96,7 @@ if __name__ == "__main__":
         {"name": "Carlos Juarez", "dob": "1979-05-14", "nationality": "Argentina"}
     ]
     
-    api_helper = AIHelper(api_key="your_openai_api_key")
+    api_helper = AIHelper()
     matcher = TenantMatcher(tenant, blacklist, api_helper)
     
     print(json.dumps(matcher.filter_results(), indent=2))

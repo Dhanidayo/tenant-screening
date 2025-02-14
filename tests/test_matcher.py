@@ -14,7 +14,7 @@ class TestTenantMatcher(unittest.TestCase):
             {"name": "Jane Doe", "dob": "1990-05-15", "nationality": "Canada", "pipeline": {"type": "refinitiv-blacklist"}}
         ]
         
-        self.mock_api_helper = AIHelper(api_key="fake_api_key")
+        self.mock_api_helper = AIHelper()
         self.mock_api_helper.query_chatgpt = MagicMock(side_effect=self.mock_ai_response)
 
         self.matcher = TenantMatcher(self.tenant_data, self.blacklist_data, self.mock_api_helper, threshold=80)
