@@ -32,8 +32,7 @@ Follow these steps to set the project up:
         python -c "import tenant_screening; print('Installation successful!')"
         ```
 
-    - Option 2: Using pyproject.toml (PEP 518 Modern Build System)
-      This method uses setuptools' PEP 517/518 support.
+    - Option 2: Using pyproject.toml (PEP 518 Modern Build System).
       - Ensure pip and build are up-to-date:
         ```sh
         pip install --upgrade pip setuptools wheel build
@@ -60,18 +59,10 @@ Follow these steps to set the project up:
 To use this project, you need an OpenAI API key.
 If you don't provide an API key, the program will fall back to the default fuzzy matching technique
 
-### Option 1: Use a `.env` File (Recommended)
+### Use a `.env` File (Recommended)
 1. Create an `.env` file in the project root.
 2. Add the following line: 
     OPENAI_API_KEY=your_actual_api_key
-
-### Option 2: Set Environment Variable
-- On Mac/Linux:
-  export OPENAI_API_KEY=your_actual_api_key
-
-- On Windows (Command Prompt):
-  set OPENAI_API_KEY=your_actual_api_key
-
 
 ## Running the Project
 To run the tenant screening tool, use:
@@ -82,7 +73,7 @@ python main.py
 ### Expected Output
 The program will:
 1. Read tenant data and a list of blacklisted individuals.
-2. Use fuzzy matching to calculate similarity scores.
+2. Use AI or fuzzy matching to calculate similarity scores.
 3. Print a JSON-formatted result indicating whether a match is found.
 
 Example Output:
@@ -102,7 +93,7 @@ Example Output:
 ```
 
 ## To run tests
-To run the tenant screening tool, use:
+To test the tenant screening tool, use:
 ```sh
 pytest tests/
 ```
