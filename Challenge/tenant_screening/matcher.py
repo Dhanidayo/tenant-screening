@@ -25,7 +25,7 @@ class TenantMatcher:
 
 
     def normalize_name(self, name):
-        """Normalize names for better comparison, handling multiple-name structures in LATAM regions."""
+        """Normalize names for better comparison, handling multiple-name structures for regions like LATAM."""
         name = re.sub(r'\W+', ' ', name).strip().lower()
 
         stopwords = {"de", "la", "del", "los", "las"}
@@ -48,15 +48,15 @@ class TenantMatcher:
     
     def assess_risk(self, record: Dict[str, str]) -> Dict[str, str]:
         """
-        Assess the blacklist match using AIHelper. If AIHelper fails, fall back to rule-based matching.
+        Assess the blacklist match using AIHelper. If AIHelper fails, fall back to fuzzy matching.
         """
         try:
             ai_result = self.api_helper.query_chatgpt(self.tenant_data, record)
             classification = ai_result["classification"]
             reasoning = ai_result["reasoning"]
         except (RateLimitError, AuthenticationError, OpenAIError) as e:
-            print(f"\n⚠️ AI API Error: {e}")
-            print("⚠️ Using fallback matching based on fuzzy name similarity and metadata.\n")
+            print(f"\nAI API Error: {e}")
+            print("Using fallback matching based on fuzzy name similarity and metadata.\n")
 
             match_score = self.calculate_match_score(record)
             dob_match = self.tenant_data.get("dob") == record.get("dob")

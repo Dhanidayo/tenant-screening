@@ -9,7 +9,7 @@ load_dotenv()
 class AIHelper:
     def __init__(self):
         """
-        Initialize AIHelper with OpenAI API key.
+        Initialize AIHelper by assigning API key and client.
         """
         api_key = os.getenv("OPENAI_API_KEY")
 
