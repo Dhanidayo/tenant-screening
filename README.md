@@ -10,8 +10,7 @@ The `tenant_screening` package is a Python-based tool designed to compare tenant
 ## Installation
 Follow these steps to set the project up:
 
-1. **Clone the projecte**
-   - [clone at:](https://github.com/Dhanidayo/tenant-screening.git)
+1. **[Clone](https://github.com/Dhanidayo/tenant-screening.git)**
 
 2. **Installation Methods**
     - Option 1: Using setup.py (Traditional Method)
