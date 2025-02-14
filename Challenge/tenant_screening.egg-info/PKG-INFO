@@ -1,0 +1,13 @@
+Metadata-Version: 2.2
+Name: tenant_screening
+Version: 1.0.0
+Summary: A package for screening tenants
+Author-email: Sarah Adebesin <sarahjoseph@ymail.com>
+License: MIT
+Requires-Dist: fuzzywuzzy
+Requires-Dist: python-Levenshtein
+Requires-Dist: openai
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: flake8; extra == "dev"

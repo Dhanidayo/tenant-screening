@@ -1,0 +1,8 @@
+fuzzywuzzy
+python-Levenshtein
+openai
+
+[dev]
+pytest
+black
+flake8
