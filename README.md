@@ -59,7 +59,7 @@ Follow these steps to set the project up:
 To use this project, you need an OpenAI API key.
 If you don't provide an API key, the program will fall back to the default fuzzy matching technique
 
-### Use a `.env` File (Recommended)
+### Use a `.env` File
 1. Create an `.env` file in the project root.
 2. Add the following line: 
     OPENAI_API_KEY=your_actual_api_key
