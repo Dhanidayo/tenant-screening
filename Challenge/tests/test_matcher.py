@@ -52,7 +52,6 @@ class TestTenantMatcher(unittest.TestCase):
         """Test the match score calculation."""
         results = self.matcher.calculate_match_score(self.candidate, self.blacklist_data)
         
-        # Check that results contain match_score, confidence, and classification
         for result in results:
             self.assertIn("match_score", result)
             self.assertIn("confidence", result)
@@ -62,7 +61,6 @@ class TestTenantMatcher(unittest.TestCase):
         """Test classification pipeline with mocked API."""
         classified_results = self.matcher.classify(self.candidate, self.blacklist_data)
         
-        # Ensure API call was made
         self.api_helper.query_chatgpt.assert_called_once()
 
         # Validate classification structure
