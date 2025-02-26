@@ -1,73 +1,72 @@
 import unittest
-from unittest.mock import MagicMock, patch
 from tenant_screening.matcher import TenantMatcher
 from tenant_screening.ai_helper import AIHelper
-from openai import RateLimitError
-import httpx  
+from unittest.mock import MagicMock
 
 class TestTenantMatcher(unittest.TestCase):
-    def setUp(self):
-        """Set up test data and mock AIHelper"""
-        self.tenant_data = {"name": "John Doe", "dob": "1985-07-20", "nationality": "USA"}
-        self.blacklist_data = [
-            {"name": "Jonathan Doe", "dob": "1985-07-20", "nationality": "USA", "pipeline": {"type": "refinitiv-blacklist"}},
-            {"name": "Jane Doe", "dob": "1990-05-15", "nationality": "Canada", "pipeline": {"type": "refinitiv-blacklist"}}
-        ]
-        
-        self.mock_api_helper = AIHelper()
-        self.mock_api_helper.query_chatgpt = MagicMock(side_effect=self.mock_ai_response)
-
-        self.matcher = TenantMatcher(self.tenant_data, self.blacklist_data, self.mock_api_helper, threshold=80)
-
-    def mock_ai_response(self, tenant, record):
-        """Mock AI response for testing"""
-        if "Jonathan Doe" in record["name"]:
-            return {"classification": "Relevant Match", "reasoning": "High similarity in name and DOB match"}
-        return {"classification": "Probably Not Relevant", "reasoning": "No strong match"}
-
-    def test_match_score(self):
-        """Ensure that similarity scores are calculated correctly."""
-        record = {"name": "Jonathan Doe"}
-        score = self.matcher.calculate_match_score(record)
-        self.assertTrue(score >= 80, f"Expected score >= 80, but got {score}")
-
-    def test_filter_results(self):
-        """Test if the filter correctly classifies matches."""
-        results = self.matcher.filter_results()
-        
-        relevant_matches = [r for r in results if r["classification"] == "Relevant Match"]
-        self.assertGreater(len(relevant_matches), 0, "Expected at least one Relevant Match")
-
-    def test_ai_classification(self):
-        """Test if AI classification is correctly applied."""
-        results = self.matcher.filter_results()
-        
-        for result in results:
-            if "Jonathan Doe" in result["name"]:
-                self.assertEqual(result["classification"], "Relevant Match")
-            else:
-                self.assertEqual(result["classification"], "Probably Not Relevant")
-
-    @patch.object(AIHelper, 'query_chatgpt')
-    def test_fallback_matching_on_ai_failure(self, mock_query_chatgpt):
-        """Test fallback logic when AI API fails."""
     
-        mock_response = MagicMock(spec=httpx.Response)
-        mock_response.status_code = 429  
-        mock_response.request = MagicMock()
-        mock_response.json.return_value = {"error": "Rate limit exceeded"}
-        mock_response.headers = {"x-request-id": "mock-request-id"}
+    def setUp(self):
+        """Setup test data before each test runs."""
+        self.candidate = {
+            "first_name": "Juan",
+            "last_name": "Perez",
+            "birthdate": "1985-06-15",
+            "nationality": "Argentina",
+            "age": 39
+        }
 
-        mock_query_chatgpt.side_effect = RateLimitError(
-            message="API quota exceeded",
-            response=mock_response,  
-            body=mock_response.json()
+        self.blacklist_data = [
+            {
+                "first_name": "Juan",
+                "last_name": "Perez",
+                "birthdate": "1985-06-15",
+                "nationality": "Argentina",
+                "age": 39,
+                "pipeline": {"type": "refinitiv-blacklist"}
+            },
+            {
+                "first_name": "Carlos",
+                "last_name": "Garcia",
+                "birthdate": "1979-03-22",
+                "nationality": "Mexico",
+                "age": 45,
+                "pipeline": {"type": "refinitiv-blacklist"}
+            }
+        ]
+
+        self.api_helper = MagicMock()
+        self.api_helper.query_chatgpt = MagicMock(return_value=self.blacklist_data)
+
+        self.matcher = TenantMatcher(
+            tenant_data=self.candidate,
+            blacklist_data=self.blacklist_data,
+            api_helper=self.api_helper
         )
 
-        results = self.matcher.filter_results()
+    def test_normalize_name(self):
+        """Test name normalization method."""
+        normalized = self.matcher.normalize_name("José", "de la Cruz")
+        self.assertEqual(normalized, "jose cruz")
 
+    def test_calculate_match_score(self):
+        """Test the match score calculation."""
+        results = self.matcher.calculate_match_score(self.candidate, self.blacklist_data)
+        
+        # Check that results contain match_score, confidence, and classification
         for result in results:
-            self.assertIn(result["classification"], ["Relevant Match", "Moderate Match", "Probably Not Relevant"])
+            self.assertIn("match_score", result)
+            self.assertIn("confidence", result)
+            self.assertIn("classification", result)
+
+    def test_classify(self):
+        """Test classification pipeline with mocked API."""
+        classified_results = self.matcher.classify(self.candidate, self.blacklist_data)
+        
+        # Ensure API call was made
+        self.api_helper.query_chatgpt.assert_called_once()
+
+        # Validate classification structure
+        self.assertTrue(all("classification" in result for result in classified_results))
 
 if __name__ == "__main__":
     unittest.main()

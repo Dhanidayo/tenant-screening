@@ -1,24 +1,40 @@
+import sys
 import os
+
+sys.path.append(os.path.abspath("Challenge"))
+
 import json
 from tenant_screening.matcher import TenantMatcher
 from tenant_screening.ai_helper import AIHelper
 
-tenant_data = {
-    "name": "Juan Carlos Gomez",
-    "dob": "1985-07-20",
-    "nationality": "Mexico"
-}
+def main():
+    """Main function to execute the tenant screening classification."""
+    data_dir = "data"
+    input_file = os.path.join(data_dir, "input.json")
+    output_file = os.path.join(data_dir, "output.json")
 
-blacklist_data = [
-    {"name": "Juan C. Gomez", "dob": "1985-07-20", "nationality": "Mexico", "pipeline": {"type": "refinitiv-blacklist"}},
-    {"name": "Carlos Juarez", "dob": "1979-05-14", "nationality": "Argentina", "pipeline": {"type": "refinitiv-blacklist"}}
-]
+    # Load input data
+    with open(input_file, "r", encoding="utf-8") as f:
+        input_data = json.load(f)
 
-api_key = os.getenv("OPENAI_API_KEY") or input("Enter your OpenAI API key: ")
-api_helper = AIHelper(api_key)
+    candidate_info = input_data["candidate"]
+    raw_results = input_data["search_results"]
 
-matcher = TenantMatcher(tenant_data, blacklist_data, api_helper, threshold=80)
+    # Initialize classifier
+    classifier = TenantMatcher(
+        tenant_data=candidate_info,
+        blacklist_data=raw_results,
+        api_helper=AIHelper(os.getenv("OPENAI_API_KEY"))
+    )
 
-results = matcher.filter_results()
+    # Process classification
+    classified_results = classifier.classify(candidate_info, raw_results)
 
-print(json.dumps(results, indent=2))
+    # Save results to output file
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(classified_results, f, indent=2)
+
+    print(f"Classification results saved to {output_file}")
+
+if __name__ == "__main__":
+    main()

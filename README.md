@@ -14,41 +14,11 @@ Follow these steps to set the project up:
    - (https://github.com/Dhanidayo/tenant-screening.git)
 
 2. **Installation Methods**
-    - Option 1: Using setup.py (Traditional Method)
-      - Create and activate a virtual environment:
-        ```sh
-        python -m venv .venv
-        source .venv/bin/activate  # macOS/Linux
-        .venv\Scripts\activate      # Windows
-        ```
-
-      - Install the package using setup.py:
-        ```sh
-        pip install -e .
-        ```
-      
-      - Verify installation:
-        ```sh
-        python -c "import tenant_screening; print('Installation successful!')"
-        ```
-
-    - Option 2: Using pyproject.toml (PEP 518 Modern Build System).
-      - Ensure pip and build are up-to-date:
-        ```sh
-        pip install --upgrade pip setuptools wheel build
-        ```
-
-      - Create and activate a virtual environment:
-        ```sh
-        python -m venv .venv
-        source .venv/bin/activate  # macOS/Linux
-        .venv\Scripts\activate      # Windows
-        ```
-
-      - Install the package using pyproject.toml:
-        ```sh
-        pip install .
-        ```
+    - Install the package
+      ```sh
+      python -m pip install --upgrade pip setuptools wheel
+      pip install -r requirements.txt
+      ```
       
       - Verify installation:
         ```sh

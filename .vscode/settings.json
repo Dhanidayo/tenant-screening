@@ -1,5 +1,6 @@
 {
     "python.analysis.extraPaths": [
-        "./build/lib"
+        "./build/lib",
+        "./Challenge"
     ]
 }

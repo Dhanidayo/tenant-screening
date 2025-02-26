@@ -1,0 +1,251 @@
+{
+  "candidate": {
+    "first_name": "Juan Carlos",
+    "last_name": "Rodriguez",
+    "birthdate": "1985-06-15",
+    "nationality": "Mexican",
+    "age": 38
+  },
+  "search_results": [
+    {
+      "first_name": "Juan",
+      "last_name": "Rodriguez",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Carlos",
+      "last_name": "Juarez",
+      "birthdate": "1990-02-20",
+      "nationality": "Mexican",
+      "age": 33,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Juan C.",
+      "last_name": "Rodriguez",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Rodriguez",
+      "last_name": "Juan Carlos",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Juan Carlos",
+      "last_name": "Martinez",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Rodriguez Lopez",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Carlos",
+      "last_name": "Rodriguez",
+      "birthdate": "1987-08-10",
+      "nationality": "Mexican",
+      "age": 36,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Juan",
+      "last_name": "Carlos Rdz",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Rodrigues",
+      "last_name": "Juan Carlos",
+      "birthdate": "1985-06-15",
+      "nationality": "Brazilian",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "J. Carlos",
+      "last_name": "Rodriguez",
+      "birthdate": "1985-06-15",
+      "nationality": "Mexican",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Garcia",
+      "birthdate": "1979-11-23",
+      "nationality": "Spanish",
+      "age": 44,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "David",
+      "last_name": "Lee",
+      "birthdate": "1992-04-01",
+      "nationality": "Korean",
+      "age": 31,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Sophie",
+      "last_name": "Dubois",
+      "birthdate": "1988-09-18",
+      "nationality": "French",
+      "age": 35,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Ahmed",
+      "last_name": "Khan",
+      "birthdate": "1975-03-07",
+      "nationality": "Pakistani",
+      "age": 48,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Elena",
+      "last_name": "Petrov",
+      "birthdate": "1995-12-12",
+      "nationality": "Russian",
+      "age": 28,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Li",
+      "last_name": "Wei",
+      "birthdate": "1982-07-28",
+      "nationality": "Chinese",
+      "age": 41,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Isabella",
+      "last_name": "Rossi",
+      "birthdate": "1998-05-05",
+      "nationality": "Italian",
+      "age": 25,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Kenji",
+      "last_name": "Tanaka",
+      "birthdate": "1970-10-30",
+      "nationality": "Japanese",
+      "age": 53,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Aisha",
+      "last_name": "Ali",
+      "birthdate": "1989-01-14",
+      "nationality": "Egyptian",
+      "age": 34,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Peter",
+      "last_name": "Schmidt",
+      "birthdate": "1977-08-22",
+      "nationality": "German",
+      "age": 46,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Sofia",
+      "last_name": "Silva",
+      "birthdate": "1993-03-09",
+      "nationality": "Portuguese",
+      "age": 30,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Viktor",
+      "last_name": "Novak",
+      "birthdate": "1980-11-05",
+      "nationality": "Czech",
+      "age": 43,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Nadia",
+      "last_name": "Hassan",
+      "birthdate": "1986-06-27",
+      "nationality": "Moroccan",
+      "age": 37,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Oscar",
+      "last_name": "Andersson",
+      "birthdate": "1997-02-17",
+      "nationality": "Swedish",
+      "age": 26,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Mei",
+      "last_name": "Nguyen",
+      "birthdate": "1983-09-01",
+      "nationality": "Vietnamese",
+      "age": 40,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Ricardo",
+      "last_name": "Gomez",
+      "birthdate": "1974-04-25",
+      "nationality": "Argentinian",
+      "age": 49,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Alejandro",
+      "last_name": "Fernandez",
+      "birthdate": "1981-09-12",
+      "nationality": "Mexican",
+      "age": 42,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Mariana",
+      "last_name": "Lopez",
+      "birthdate": "1990-02-17",
+      "nationality": "Colombian",
+      "age": 34,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Carlos",
+      "last_name": "Mendoza",
+      "birthdate": "1978-07-30",
+      "nationality": "Chilean",
+      "age": 45,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    },
+    {
+      "first_name": "Sofia",
+      "last_name": "Ramirez",
+      "birthdate": "1985-11-05",
+      "nationality": "Peruvian",
+      "age": 38,
+      "pipeline": { "type": "refinitiv-blacklist" }
+    }
+  ]
+}
