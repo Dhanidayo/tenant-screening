@@ -1,24 +1,25 @@
+[tool.setuptools.packages.find]
+where = ["Challenge"] 
+
 [build-system]
-requires = ["setuptools>=64", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "tenant_screening"
-version = "1.0.0"
-description = "A package for screening tenants"
+version = "0.1.0"
+description = "A package for tenant screening using AI and fuzzy matching."
 authors = [
     { name = "Sarah Adebesin", email = "sarahjoseph@ymail.com" }
 ]
-license = { text = "MIT" }
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.7"
 dependencies = [
     "fuzzywuzzy",
-    "python-Levenshtein",
-    "openai",
+    "python-dotenv",
+    "openai"
 ]
 
-[tool.setuptools.packages.find]
-where = ["Challenge"]
-include = ["tenant_screening*"]
-
-[project.optional-dependencies]
-dev = ["pytest", "python-dotenv", "black", "flake8"]
+[project.scripts]
+tenant-screening = "tenant_screening.main:main"

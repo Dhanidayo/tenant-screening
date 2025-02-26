@@ -4,7 +4,7 @@ import json
 import logging
 from typing import Dict, List
 from fuzzywuzzy.process import fuzz
-from tenant_screening.ai_helper import AIHelper
+from .ai_helper import AIHelper
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -115,7 +115,11 @@ if __name__ == "__main__":
         classified_results = classifier.classify(candidate_info, raw_results)
         
         # Sort results by match_score in descending order
-        classified_results.sort(key=lambda x: (-x["match_score"], x["first_name"], x["last_name"]))
+        try:
+            classified_results.sort(key=lambda x: -x.get("match_score", 0))
+            logger.info("Sorting completed.")
+        except Exception as e:
+            logger.error(f"Sorting failed: {e}")
 
         # Ensure output file is created and written correctly
         with open(output_file, "w", encoding="utf-8") as f:
