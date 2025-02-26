@@ -27,10 +27,8 @@ def main():
         api_helper=AIHelper(os.getenv("OPENAI_API_KEY"))
     )
 
-    # Classify results
     classified_results = classifier.classify(candidate_info, raw_results)
 
-    # Sort results by match_score in descending order
     classified_results.sort(key=lambda x: -x.get("match_score", 0))
 
     # Save output
