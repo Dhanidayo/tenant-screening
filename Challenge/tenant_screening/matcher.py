@@ -1,6 +1,7 @@
 import os
 import re
 import json
+import unicodedata
 import logging
 from typing import Dict, List
 from fuzzywuzzy.process import fuzz
@@ -26,8 +27,13 @@ class TenantMatcher:
 
     def normalize_name(self, first_name: str, last_name: str) -> str:
         """Normalize first and last names separately, then join for comparison."""
+        
         def clean_name(name: str) -> str:
+            name = unicodedata.normalize("NFKD", name)
+            name = "".join(c for c in name if not unicodedata.combining(c))
+            
             name = re.sub(r'\W+', ' ', name).strip().lower()
+
             stopwords = {"de", "la", "del", "los", "las"}
             return " ".join(part for part in name.split() if part not in stopwords)
 
