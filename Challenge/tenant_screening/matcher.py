@@ -85,7 +85,6 @@ if __name__ == "__main__":
     input_file = os.path.join(data_dir, "input.json")
     output_file = os.path.join(data_dir, "output.json")
 
-    # Ensure the data directory exists
     os.makedirs(data_dir, exist_ok=True)
 
     try:
@@ -113,14 +112,12 @@ if __name__ == "__main__":
     try:
         classified_results = classifier.classify(candidate_info, raw_results)
         
-        # Sort results by match_score in descending order
         try:
             classified_results.sort(key=lambda x: -x.get("match_score", 0))
             logger.info("Sorting completed.")
         except Exception as e:
             logger.error(f"Sorting failed: {e}")
 
-        # Ensure output file is created and written correctly
         with open(output_file, "w", encoding="utf-8") as f:
             json.dump(classified_results, f, indent=2)
 
