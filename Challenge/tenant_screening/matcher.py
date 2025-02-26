@@ -6,7 +6,6 @@ from typing import Dict, List
 from fuzzywuzzy.process import fuzz
 from .ai_helper import AIHelper
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
