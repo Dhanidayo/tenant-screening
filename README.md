@@ -25,6 +25,7 @@ Follow these steps to set the project up:
     - Install the package
       ```sh
       python -m pip install --upgrade pip setuptools wheel
+      pip install --editable .
       pip install -r requirements.txt
       ```
       
