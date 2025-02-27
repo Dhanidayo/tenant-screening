@@ -22,10 +22,9 @@ Follow these steps to set the project up:
    ```
 
 3. **Installation Methods**
-    - Install the package
+    - At the root of the project, install the package
       ```sh
       python -m pip install --upgrade pip setuptools wheel
-      pip install --editable .
       pip install -r requirements.txt
       ```
       
@@ -33,6 +32,12 @@ Follow these steps to set the project up:
         ```sh
         python -c "import tenant_screening; print('Installation successful!')"
         ```
+
+      - If installation fails, run
+        ```sh
+        pip install --editable .
+        ```
+      OR scroll down to check the trouble shooting section 
 
 ## Setting Up the API Key
 To use this project, you need an OpenAI API key.
