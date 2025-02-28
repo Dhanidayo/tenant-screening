@@ -1,3 +1,3 @@
-from .matcher import TenantMatcher
+from matcher import TenantMatcher
 
 __all__ = ["TenantMatcher"]

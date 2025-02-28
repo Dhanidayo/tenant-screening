@@ -1,8 +1,8 @@
 import json
 import os
 import argparse
-from .matcher import TenantMatcher
-from .ai_helper import AIHelper
+from matcher import TenantMatcher
+from ai_helper import AIHelper
 
 def main():
     parser = argparse.ArgumentParser(description="Tenant Screening CLI")

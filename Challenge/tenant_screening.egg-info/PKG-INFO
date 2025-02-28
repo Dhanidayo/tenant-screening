@@ -29,8 +29,16 @@ Follow these steps to set the project up:
 1. **Clone the project**
    - (https://github.com/Dhanidayo/tenant-screening.git)
 
-2. **Installation Methods**
-    - Install the package
+2. **Create and Activate a Virtual Environment**
+   ```sh
+    python -m venv .venv
+    source .venv/bin/activate  # macOS/Linux
+    # OR
+    .venv\Scripts\activate  # Windows
+   ```
+
+3. **Installation Methods**
+    - At the root of the project, install the package
       ```sh
       python -m pip install --upgrade pip setuptools wheel
       pip install -r requirements.txt
@@ -40,6 +48,12 @@ Follow these steps to set the project up:
         ```sh
         python -c "import tenant_screening; print('Installation successful!')"
         ```
+
+      - If installation fails, run
+        ```sh
+        pip install --editable .
+        ```
+      OR scroll down to check the trouble shooting section 
 
 ## Setting Up the API Key
 To use this project, you need an OpenAI API key.
@@ -53,7 +67,9 @@ If you don't provide an API key, the program will fall back to the default fuzzy
 ## Running the Project
 To run the tenant screening tool, use:
 ```sh
-python main.py
+tenant-screening Challenge/data/input.json Challenge/data/output.json
+  OR
+python Challenge/tenant_screening/main.py Challenge/data/input.json Challenge/data/output.json
 ```
 
 ### Expected Output
@@ -84,7 +100,7 @@ Example Output:
 ## To run tests
 To test the tenant screening tool, use:
 ```sh
-pytest tests/
+pytest Challenge/tests/
 ```
 
 ## Troubleshooting
@@ -93,5 +109,5 @@ pytest tests/
 - Ensure you are in the correct directory.
 - Run `pip install -e .` to install the package in editable mode.
 
-#### `TypeError: TenantMatcher.__init__() got an unexpected keyword argument 'threshold'`
-- Ensure `TenantMatcher` is correctly instantiated with only `tenant_data` and `blacklist_data`.
+#### `FileNotFoundError: [Errno 2] No such file or directory: 'input.json'`
+- Ensure you specify the correct path to the input JSON file inside the Challenge/data/ directory.
