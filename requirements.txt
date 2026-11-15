@@ -1,5 +1,5 @@
 fuzzywuzzy
 python-Levenshtein
-openai
+openai>=1.40
 pytest
 python-dotenv

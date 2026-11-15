@@ -18,7 +18,7 @@ requires-python = ">=3.7"
 dependencies = [
     "fuzzywuzzy",
     "python-dotenv",
-    "openai"
+    "openai>=1.40"
 ]
 
 [project.scripts]

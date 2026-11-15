@@ -5,7 +5,11 @@ import unicodedata
 import logging
 from typing import Dict, List
 from fuzzywuzzy.process import fuzz
-from ai_helper import AIHelper
+
+try:
+    from .ai_helper import AIHelper
+except ImportError:  # run as a script from inside the package folder
+    from ai_helper import AIHelper
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
@@ -64,7 +68,8 @@ class TenantMatcher:
             result.update({
                 "match_score": final_score,
                 "confidence": confidence,
-                "classification": "relevant match" if final_score > 80 else "probably not relevant"
+                "classification": "relevant match" if final_score > 80 else "probably not relevant",
+                "classified_by": "rules"
             })
 
             logger.info(f"Processed {result['first_name']} {result['last_name']} - Score: {final_score}, Confidence: {confidence}")

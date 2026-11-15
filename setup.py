@@ -8,7 +8,7 @@ setup(
     install_requires=[
         "fuzzywuzzy",
         "python-Levenshtein",
-        "openai",
+        "openai>=1.40",
     ],
     entry_points={
         "console_scripts": [

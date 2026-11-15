@@ -1,8 +1,13 @@
 import json
 import os
 import argparse
-from matcher import TenantMatcher
-from ai_helper import AIHelper
+
+try:
+    from .matcher import TenantMatcher
+    from .ai_helper import AIHelper
+except ImportError:  # run as a script: python Challenge/tenant_screening/main.py
+    from matcher import TenantMatcher
+    from ai_helper import AIHelper
 
 def main():
     parser = argparse.ArgumentParser(description="Tenant Screening CLI")
